@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">	
+	<title>My Google Map</title>
+	<style type="text/css">
+		#map{
+			height:500px;
+			width:100%;
+		}
+	</style>
+</head>
+<body>
+	<h1>North East India's capitals</h1>
+	<div id="map"></div>
+	<script type="text/javascript">
+		var initMap=function(){
+			//map options
+			var options={
+				zoom:7,
+				center:{lat:25.594422,lng:92.792996}
+			};
+			//New map
+			var map=new google.maps.Map(document.getElementById('map'),options);
+
+			 
+			/*var marker=new google.maps.Marker({
+				position:{lat:26.1445,lng:91.7362},
+				map:map,
+				icon:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png'
+			});
+
+			var infoWindow=new google.maps.InfoWindow({
+				content:'<h3>Parking</h3>'
+			});
+			marker.addListener('click',()=>{
+				infoWindow.open(map,marker);
+			});
+			*/
+
+			//Array of markers
+			var markers=[{coords:{lat:26.1445,lng:91.7362},
+						iconImage:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+						content:'<h3>'+'Guwahati'+'</h3>'	
+						},
+						{coords:{lat:25.5788,lng:91.8933},
+						iconImage:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+						content:'<h3>'+'Shillong'+'</h3>'	
+						},
+						{coords:{lat:27.08436,lng:93.6053},
+						iconImage:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+						content:'<h3>'+'Itanagar'+'</h3>'	
+						},
+						{coords:{lat:25.6586,lng:94.1053},
+						iconImage:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+						content:'<h3>'+'Kohima'+'</h3>'	
+						},
+						{coords:{lat:23.7271,lng:92.7176},
+						iconImage:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+						content:'<h3>'+'Aizawl'+'</h3>'	
+						},
+						{coords:{lat:24.8170,lng:93.9368},
+						iconImage:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+						content:'<h3>'+'Imphal'+'</h3>'	
+						},
+						{coords:{lat:23.8315,lng:91.2868},
+						iconImage:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+						content:'<h3>'+'Agartala'+'</h3>'	
+						},
+						{coords:{lat:27.3389,lng:88.6065},
+						iconImage:'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+						content:'<h3>'+'Gangtok'+'</h3>'	
+						}
+
+
+
+			];
+			markers.forEach((mark)=>{
+				addMarker(mark);
+			});
+			
+			function addMarker(props){
+				var marker=new google.maps.Marker({
+					position:props.coords,
+					map:map
+				});	
+
+				//check for custom icon image
+				if(props.iconImage)
+				{
+					marker.setIcon(props.iconImage);
+				}
+				//check for content
+				if(props.content)
+				{
+					var infoWindow=new google.maps.InfoWindow({
+						content:props.content
+					});
+					marker.addListener('click',()=>{
+						infoWindow.open(map,marker);
+					});
+				}
+				
+			};
+			
+			
+		}
+	</script>
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUAVHgkCyc-H5ofpD1Shqwzg74mwQmepc&callback=initMap">
+    </script>
+
+</body>
+</html>
